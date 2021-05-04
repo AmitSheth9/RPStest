@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    // Your JavaScript goes here!
+    console.log("Hello, World!")
+    var rpcArray = ["Rock", "Paper", "Scissors"];
+    function computerPlay() {
+      
+      var randomRPC = rpcArray[Math.floor(Math.random()*rpcArray.length)];
+    
+     return randomRPC;
+    
+    }
+    
+    
+    function RPC(playerSelection, computerSelection) {
+      if (playerSelection === "Rock") {
+        if (computerSelection === "Rock") {
+          return "Tie. Both had Rock!"; }
+        else if (computerSelection === "Paper")  {
+          return "You lose! Rock beats paper!"
+        }
+        else  {
+          return "You win! Rock beats Scissors."
+        }
+        }
+      else if (playerSelection=== "Scissors") {
+            if (computerSelection==="Rock") {
+              return "You lose. Rock beats Scissors"
+            }
+            else if (computerSelection==="Paper") {
+              return "You win. Scissors beats Paper"
+            }
+            else {
+              return "Tie. Both had Scissors";
+            }
+      }
+      
+      else if (playerSelection=== "Paper") {
+            if (computerSelection=== "Rock") {
+              return "You win. Paper beats Rock."
+            }
+            else if (computerSelection=== "Paper") {
+              return "Tie. Both had Paper";
+            }
+            else {
+              return "You lose. Scissor beats Paper";
+            }
+      }
+     
+      }
+    
+ 
+    
+   // console.log(RPC("Rock", computerPlay()));
+    
+   // console.log("Computer selected " + computerPlay());
+    
+      function game() {
+      let compareW = "You win";
+      let compareL = "You lose";
+      let compareT = "Tie";
+      let Pwins = 0;
+      let Cwins = 0;
+      let Tie =0;
+       
+      for (count=1; count<6; ++count) {
+        let playerSelector = window.prompt("Enter Rock Paper or Scissors to play!");
+        let result = RPC(playerSelector,computerPlay());
+        console.log(result);
+       
+        
+         
+        if (result.substr(0,5) === (compareW.substr(0,5))) {
+            ++Pwins;   }
+          else if (result.substr(0,5)=== (compareL.substr(0,5))) {
+           ++Cwins;   }
+        else if  (result.substr(0,1)===compareT.substr(0,1)) {
+          ++Tie; }
+      
+      }
+       if (Pwins>Cwins) {
+        console.log("You win best of 5 with" + " " + Pwins + " wins and " + Cwins+ " losses");
+      }
+      else if (Cwins>Pwins)  {
+        console.log("You lose best of 5 with" + " " + Pwins + " wins " + Cwins +" losses" );
+      }
+      else if (Pwins=Cwins) {
+        console.log("You tied with " + Pwins + " wins and " +Cwins+ " losses and " + Tie+ " Ties");
+      } 
+        
+     
+      
+      }
+   
+    game();
+      
+      
+    
+  </script>
+</body>
+</html>
