@@ -5,51 +5,78 @@
   <meta charset="UTF-8"/>
 </head>
 <body>
+  <div id ="results"></div>
+  <button id="Rock">Rock</button>
+  <button id ="Paper">Paper</button>
+  <button id ="Scissors">Scissors</button>
+
+  
+
+
+  </div>
+
   <script>
-    // Your JavaScript goes here!
+    
+
+
+
+
+
+
+// Your JavaScript goes here!
     console.log("Hello, World!")
     var rpcArray = ["Rock", "Paper", "Scissors"];
-    function computerPlay() {
+ function computerPlay() {
       
       var randomRPC = rpcArray[Math.floor(Math.random()*rpcArray.length)];
     
-     return randomRPC;
+    return randomRPC;
     
     }
     
     
-    function RPC(playerSelection, computerSelection) {
+    function RPC(playerSelection) {
+      var randomRPC = rpcArray[Math.floor(Math.random()*rpcArray.length)]; 
       if (playerSelection === "Rock") {
-        if (computerSelection === "Rock") {
-          return "Tie. Both had Rock!"; }
-        else if (computerSelection === "Paper")  {
-          return "You lose! Rock beats paper!"
+        if (randomRPC === "Rock") {
+          console.log("Tie. Both had Rock!");
+          results.textContent =  "Tie. Both had Rock!"; }
+        else if (randomRPC === "Paper")  {
+          console.log("You lose! Rock beats paper!");
+          results.textContent =  "You lose! Rock beats paper!"
         }
         else  {
-          return "You win! Rock beats Scissors."
+          console.log("You win! Rock beats Scissors.");
+          results.textContent = "You win! Rock beats Scissors."
         }
         }
       else if (playerSelection=== "Scissors") {
-            if (computerSelection==="Rock") {
-              return "You lose. Rock beats Scissors"
+            if (randomRPC==="Rock") {
+              console.log("You lose. Rock beats Scissors");
+              results.textContent =  "You lose. Rock beats Scissors"
             }
-            else if (computerSelection==="Paper") {
-              return "You win. Scissors beats Paper"
+            else if (randomRPC==="Paper") {
+              console.log("You win. Scissors beats Paper");
+              results.textContent =  "You win. Scissors beats Paper"
             }
             else {
-              return "Tie. Both had Scissors";
+              console.log("Tie. Both had Scissors");
+              results.textContent =  "Tie. Both had Scissors";
             }
       }
       
       else if (playerSelection=== "Paper") {
-            if (computerSelection=== "Rock") {
-              return "You win. Paper beats Rock."
+            if (randomRPC=== "Rock") {
+              console.log("You win. Paper beats Rock.");
+              results.textContent =  "You win. Paper beats Rock."
             }
-            else if (computerSelection=== "Paper") {
-              return "Tie. Both had Paper";
+            else if (randomRPC=== "Paper") {
+              console.log("Tie. Both had Paper");
+              results.textContent =  "Tie. Both had Paper";
             }
             else {
-              return "You lose. Scissor beats Paper";
+              console.log("You lose. Scissor beats Paper");
+              results.textContent =  "You lose. Scissor beats Paper";
             }
       }
      
@@ -57,11 +84,11 @@
     
  
     
-   // console.log(RPC("Rock", computerPlay()));
+   // console.log(RPC("Rock", randomRPC()));
     
-   // console.log("Computer selected " + computerPlay());
+   // console.log("Computer selected " + randomRPC());
     
-      function game() {
+  /*    function game() {
       let compareW = "You win";
       let compareL = "You lose";
       let compareT = "Tie";
@@ -71,7 +98,7 @@
        
       for (count=1; count<6; ++count) {
         let playerSelector = window.prompt("Enter Rock Paper or Scissors to play!");
-        let result = RPC(playerSelector,computerPlay());
+        let result = RPC(playerSelector,randomRPC());
         console.log(result);
        
         
@@ -97,10 +124,35 @@
      
       
       }
-   
-    game();
-      
-      
+      */
+   RPC();
+    //game();
+    
+    const Rock =document.querySelectorAll('button');
+    //Rock.addEventListener('click',function() { RPC(this.id); });
+    Rock.forEach((button) => {
+      button.addEventListener('click', () => {
+    alert(button.id);
+  });
+});
+
+    const Paper=document.querySelector('#Paper');
+    Paper.addEventListener('click', function() {RPC("Paper");});
+
+    const Scissors=document.querySelector('#Scissors');
+    Scissors.addEventListener('click', function() {RPC("Scissors");});
+    
+    //const results = document.querySelector('#results');
+    const btnValue = document.getElementById('results').innerHTML;
+    var buttons = document.getElementsByTagName('button');
+    console.log(btnValue);
+    console.log(this.id);
+    console.log(document.getElementById('results').innerHTML);
+
+
+    results.textContent = RPC(this.id);
+    
+
     
   </script>
 </body>
