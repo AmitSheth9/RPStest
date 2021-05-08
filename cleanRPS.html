@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <div id ="buttons"></div>
+  <button id="Rock">Rock</button>
+  <button id ="Paper">Paper</button>
+  <button id ="Scissors">Scissors</button>
+
+  
+
+
+  </div>
+<div id = "results"></div>
+<div id = "fiveResults"></div>
+  
+<script>
+    
+    var rpcArray = ["Rock", "Paper", "Scissors"];
+    
+    const buttons =document.querySelectorAll('button');
+    buttons.forEach((button) => {
+     button.addEventListener('click', function() {RPC(button.id);}); 
+    });
+
+
+let Pwins = 0;
+let Cwins = 0;
+let Tie =0;
+let count = 0;
+
+function RPC(playerSelection) {
+
+var randomRPC = rpcArray[Math.floor(Math.random()*rpcArray.length)]; 
+
+if (playerSelection === "Rock") {
+  if (randomRPC === "Rock") {
+    ++count;
+    ++Tie;
+    console.log("Tie. Both had Rock!");
+     results.textContent =  "Tie. Both had Rock!"; }
+  else if (randomRPC === "Paper")  {
+    ++count;
+    ++Cwins;
+    console.log("You lose! Rock beats paper!");
+    results.textContent =  "You lose! Rock beats paper!"
+  }
+  else  {
+    ++count;
+    ++Pwins;
+    console.log("You win! Rock beats Scissors.");
+    results.textContent = "You win! Rock beats Scissors."
+  }
+  }
+else if (playerSelection=== "Scissors") {
+      if (randomRPC==="Rock") {
+        ++count;
+        ++Cwins;
+        console.log("You lose. Rock beats Scissors");
+        results.textContent =  "You lose. Rock beats Scissors"
+      }
+      else if (randomRPC==="Paper") {
+        ++count;
+        ++Pwins;
+        console.log("You win. Scissors beats Paper");
+       results.textContent =  "You win. Scissors beats Paper"
+      }
+      else {
+        ++count;
+        ++Tie;
+        console.log("Tie. Both had Scissors");
+       results.textContent =  "Tie. Both had Scissors";
+      }
+}
+
+    else if (playerSelection=== "Paper") {
+      if (randomRPC=== "Rock") {
+        ++count;
+        ++Pwins;
+        console.log("You win. Paper beats Rock.");
+       results.textContent =  "You win. Paper beats Rock."
+      }
+      else if (randomRPC=== "Paper") {
+        ++count;
+        ++Tie;
+        console.log("Tie. Both had Paper");
+      results.textContent =  "Tie. Both had Paper";
+        
+      }
+      else {
+        ++count;
+        ++Cwins;
+        console.log("You lose. Scissor beats Paper");
+        results.textContent =  "You lose. Scissor beats Paper";
+      }
+}
+if (count===5) {
+if (Pwins>Cwins) {
+  count =0;
+  console.log("You win best of 5 with" + " " + Pwins + " wins and " + Cwins+ " losses");
+  fiveResults.textContent = "You win best of 5 with" + " " + Pwins + " wins and " + Cwins+ " losses";
+  Pwins=0;
+  Cwins = 0;
+  Tie =0;
+}
+else if (Cwins>Pwins)  {
+  count = 0;
+  console.log("You lose best of 5 with" + " " + Pwins + " wins " + Cwins +" losses" );
+  fiveResults.textContent = "You lose best of 5 with" + " " + Pwins + " wins " + Cwins +" losses";
+  Pwins=0;
+  Cwins = 0;
+  Tie =0;
+}
+else if (Pwins=Cwins) {
+  count = 0;
+  console.log("You tied with " + Pwins + " wins and " +Cwins+ " losses and " + Tie+ " Ties");
+  fiveResults.textContent = "You tied with " + Pwins + " wins and " +Cwins+ " losses and " + Tie+ " Ties";
+  Pwins=0;
+  Cwins = 0;
+  Tie =0;
+} 
+}
+
+}
+
+    
+</script>
+</body>
+</html>
